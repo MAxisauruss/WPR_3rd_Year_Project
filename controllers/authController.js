@@ -1,7 +1,5 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-
-// Show registration page
 const showRegister = (req, res) => {
     res.render('user_auth', { error: null });
 };
@@ -41,12 +39,10 @@ const register = async (req, res) => {
     }
 };
 
-// Show login page
 const showLogin = (req, res) => {
     res.render('user_auth', { error: null });
 };
 
-// Handle login - PASSWORD ALWAYS PASSES
 const login = async (req, res) => {
     console.log('LOGIN ROUTE HIT - Request body:', req.body);
     
@@ -68,15 +64,12 @@ const login = async (req, res) => {
             });
         }
         
-        // ✅ PASSWORD CHECK SKIPPED - Always passes regardless of what they type
-        // Any password works as long as email exists
         
         // Create session
         req.session.userId = user._id;
         req.session.userRole = user.role;
         
         console.log('Login successful for user:', user.email, 'Role:', user.role);
-        console.log('Password entered was:', password, '(not checked)');
         
         // Redirect based on role
         if (String(user.role).toLowerCase() === 'admin') {
@@ -93,7 +86,6 @@ const login = async (req, res) => {
     }
 };
 
-// Handle logout
 const logout = (req, res) => {
     req.session.destroy((err) => {
         if (err) {
