@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<div class="container">
+    <div class="event-card" style="max-width: 900px; margin: 0 auto;">
+        <img src="/images/view-futuristic-concert%20(1).jpg" alt="event image" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+        <div class="event-card-content">
+            <h2 style="margin-bottom: 12px;"><%= event.title %></h2>
+            <p><strong>Date:</strong> <%= event.date ? new Date(event.date).toLocaleDateString() : '' %></p>
+            <p><strong>Venue:</strong> <%= event.location || event.venue || 'TBA' %></p>
+            <p><strong>Description:</strong> <%= event.description %></p>
+            <p><strong>Price:</strong> R <%= event.price %></p>
+            <p><strong>Tickets Left:</strong> <%= event.availableTickets ?? 'TBA' %></p>
+
+            <% if (user) { %>
+                <a href="/booking/event/<%= event._id %>/book" class="btn" style="margin-right: 10px;">Book Tickets</a>
+            <% } else { %>
+                <a href="/auth/login" class="btn" style="margin-right: 10px;">Login to Book</a>
+            <% } %>
+
+            <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+                <div style="margin-top: 15px;">
+                    <a href="/events/admin/edit/<%= event._id %>" class="btn" style="background:#7c3aed; margin-right: 10px;">Edit</a>
+                    <form action="/events/admin/delete/<%= event._id %>" method="post" style="display:inline;">
+                        <button class="btn" type="submit" style="background:#ef4444; border:0;">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+</html>
+

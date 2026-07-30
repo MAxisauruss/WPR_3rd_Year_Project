@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<div class="container">
+    <h2>Upcoming Events</h2>
+    
+    <% if (loginSuccess) { %>
+        <div style="background-color: #d4edda; color: #155724; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+            ✓ Welcome! You have successfully logged in.
+        </div>
+    <% } %>
+
+    <% if (isAdmin) { %>
+        <div style="margin: 20px 0;">
+            <a href="/events/admin/create" class="btn">Create Event</a>
+        </div>
+    <% } %>
+
+    <div class="event-grid">
+        <% events.forEach(event => { %>
+            <div class="event-card">
+                <img src="/images/view-futuristic-concert%20(1).jpg" alt="event image" style="background: #e5e7eb; aspect-ratio: 16/9; object-fit: cover;">
+                <div class="event-card-content">
+                    <h3><%= event.title %></h3>
+                    <p>Date: <%= event.date ? new Date(event.date).toLocaleDateString() : '' %></p>
+                    <p>Venue: <%= event.location || event.venue || 'TBA' %></p>
+                    <p>Tickets Left: <%= event.availableTickets ?? 'TBA' %></p>
+
+                    <% if (user) { %>
+                        <a href="/booking/event/<%= event._id %>/book" class="btn">Book Now</a>
+                    <% } else { %>
+                        <a href="/auth/login" class="btn">Login to Book</a>
+                    <% } %>
+
+                    <div style="margin-top: 10px;">
+                        <a href="/events/<%= event._id %>" class="btn" style="background:#0ea5e9;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+        <% if (!events || events.length === 0) { %>
+            <p style="margin-top: 30px; color:#D1D5DB;">No events found.</p>
+        <% } %>
+    </div>
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+</html>
+

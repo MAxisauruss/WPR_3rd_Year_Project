@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<section class="hero">
+    <h2>Smart Event Management Platform</h2>
+    <p>Book tickets for amazing events around you.</p>
+    <a href="#events" class="btn">Explore Events</a>
+</section>
+
+<div class="container" id="events">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom: 20px;">
+        <h2 style="margin:0;">Upcoming Events</h2>
+        <a href="/events" class="btn" style="background:#0ea5e9;">Browse All Events</a>
+    </div>
+
+    <div class="event-grid">
+        <% if (events && events.length > 0) { %>
+            <% events.forEach(event => { %>
+                <div class="event-card">
+                    <img src="/images/view-futuristic-concert%20(1).jpg" alt="event image" style="background: #e5e7eb; aspect-ratio: 16/9; object-fit: cover;">
+                    <div class="event-card-content">
+                        <h3><%= event.title %></h3>
+                        <p>Date: <%= event.date ? new Date(event.date).toLocaleDateString() : 'TBA' %></p>
+                        <p>Venue: <%= event.location || 'TBA' %></p>
+                        <p>Tickets Left: <%= event.availableTickets ?? 'TBA' %></p>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px;">
+                            <a href="/events/<%= event._id %>" class="btn" style="background:#0ea5e9;">View Details</a>
+                            <% if (isAuthenticated) { %>
+                                <a href="/booking/event/<%= event._id %>/book" class="btn">Book Now</a>
+                            <% } else { %>
+                                <a href="/auth/login" class="btn">Login to Book</a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p style="margin-top: 30px; color:#D1D5DB;">No upcoming events were found.</p>
+        <% } %>
+    </div>
+
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+</html>

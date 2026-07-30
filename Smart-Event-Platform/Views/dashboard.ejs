@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Event Management</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<div class="container">
+
+    <h2>Manage Enquiries</h2>
+
+    <a href="/events/admin/create" class="btn">Create Event</a>
+
+    <div class="table-container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>FullName</th>
+                    <th>Subject</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+           <tbody>
+    <% enquiries.forEach(enquiry => { %>
+    <tr>
+        <td><%= enquiry.name %></td>
+        <td><%= enquiry.subject %></td>
+        <td><%= enquiry.email %></td>
+        <td><%= enquiry.status %></td>
+        <td><%= enquiry.message %></td>
+
+        <td>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= enquiry.email %>&su=<%= encodeURIComponent('Re: ' + enquiry.subject) %>" class="btn" style="margin-bottom: 5px; display: inline-block;" target="_blank">Reply</a>
+        </td>
+    </tr>
+    <% }) %>
+</tbody>
+        </table>  
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+</html>

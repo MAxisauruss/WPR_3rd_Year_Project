@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="/Style/style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<div class="container">
+
+    <h2>My Bookings</h2>
+
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <p><%= totalBookings %></p>
+        </div>
+
+        <div class="card">
+            <h3>Upcoming Events</h3>
+            <p><%= upcomingEvents %></p>
+        </div>
+
+        <div class="card">
+            <h3>Tickets Purchased</h3>
+            <p><%= ticketsPurchased %></p>
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% bookings.forEach(booking => { %>
+
+                <tr>
+                    <td><%= booking.eventName %></td>
+                    <td><%= booking.date %></td>
+                    <td>Confirmed</td>
+                </tr>
+
+                <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+</html>

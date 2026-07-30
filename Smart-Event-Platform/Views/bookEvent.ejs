@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Event</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<div class="container">
+    <div class="event-card" style="max-width: 900px; margin: 0 auto;">
+        <img src="/images/view-futuristic-concert%20(1).jpg" alt="event image" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+        <div class="event-card-content">
+            <h2 style="margin-bottom: 12px;"><%= event.title %></h2>
+            <p><strong>Date:</strong> <%= event.date ? new Date(event.date).toLocaleDateString() : '' %></p>
+            <p><strong>Venue:</strong> <%= event.location || event.venue || 'TBA' %></p>
+            <p><strong>Description:</strong> <%= event.description %></p>
+            <p><strong>Price per ticket:</strong> R <%= event.price %></p>
+            <p><strong>Tickets Left:</strong> <%= event.availableTickets ?? event.capacity %></p>
+
+            <form action="/booking/create" method="post" style="margin-top: 20px;">
+                <input type="hidden" name="eventId" value="<%= event._id %>">
+                <label for="numberOfTickets">Number of Tickets:</label>
+                <input type="number" id="numberOfTickets" name="numberOfTickets" min="1" max="<%= event.availableTickets ?? event.capacity %>" required>
+                <button type="submit" class="btn" style="margin-top: 10px;">Confirm Booking</button>
+            </form>
+
+            <a href="/events/<%= event._id %>" class="btn" style="background:#6b7280; margin-top: 10px;">Back to Event</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<<<<<<< HEAD:Views/home.ejs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <h1>EventHub</h1>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/events">Dashboard</a></li>
+        <li><a href="/booking">Bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h2>Smart Event Management Platform</h2>
+    <p>Book tickets for amazing events around you.</p>
+    <a href="#events" class="btn">Explore Events</a>
+</section>
+
+<div class="container" id="events">
+
+    <h2>Upcoming Events</h2>
+
+    <div class="event-grid">
+
+        <% events.forEach(event => { %>
+
+        <div class="event-card">
+            <img src="<%= event.image %>" alt="event image">
+
+            <div class="event-card-content">
+                <h3><%= event.title %></h3>
+                <p>Date: <%= event.date %></p>
+                <p>Venue: <%= event.location %></p>
+                <p>Tickets Left: <%= event.availableTickets %></p>
+
+                <a href="/events/<%= event._id %>" class="btn">Book Now</a>
+            </div>
+        </div>
+
+        <% }) %>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <h1>EventHub</h1>
+
+     <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/bookings">Bookings</a></li>
+
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/auth/login">Login</a></li>
+
+    </ul>
+</nav>
+
+<section class="hero">
+    <h2>Smart Event Management Platform</h2>
+    <p>Book tickets for amazing events around you.</p>
+    <a href="#events" class="btn">Explore Events</a>
+</section>
+
+<div class="container" id="events">
+
+    <h2>Upcoming Events</h2>
+
+    <div class="event-grid">
+
+        <% events.forEach(event => { %>
+
+        <div class="event-card">
+            <img src="<%= event.image %>" alt="event image">
+
+            <div class="event-card-content">
+                <h3><%= event.title %></h3>
+                <p>Date: <%= event.date %></p>
+                <p>Venue: <%= event.venue %></p>
+                <p>Tickets Left: <%= event.capacity %></p>
+
+                <a href="/events/<%= event._id %>" class="btn">Book Now</a>
+            </div>
+        </div>
+
+        <% }) %>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Smart Event Platform © 2026</p>
+</footer>
+
+</body>
+>>>>>>> eb4c817b3aa2f4471c51f67dd23ccdc3052367cc:Smart-Event-Platform/PageViews/home.html
+</html>

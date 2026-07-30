@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Event Management</title>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <h1>EventHub</h1>
+
+    <ul>
+         <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/bookings/my-bookings">Bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/auth/login">Login</a></li>
+
+    </ul>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h2>Manage Events</h2>
+
+    <a href="/events/create" class="btn">Create Event</a>
+
+    <div class="table-container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% events.forEach(event => { %>
+
+                <tr>
+                    <td><%= event.title %></td>
+                    <td><%= event.date %></td>
+                    <td><%= event.venue %></td>
+                    <td><%= event.capacity %></td>
+
+                    <td>
+                        <a href="/events/edit/<%= event._id %>" class="btn">Edit</a>
+                        <a href="/events/delete/<%= event._id %>" class="btn">Delete</a>
+                    </td>
+                </tr>
+
+                <% }) %>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

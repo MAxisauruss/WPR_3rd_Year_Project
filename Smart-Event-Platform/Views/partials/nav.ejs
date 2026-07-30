@@ -1,0 +1,17 @@
+<nav>
+    <h1>EventHub</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/events">Events</a></li>
+        <% if (typeof userRole !== 'undefined' && userRole && String(userRole).toLowerCase() === 'admin') { %>
+            <li><a href="/admin/dashboard">Dashboard</a></li>
+        <% } %>
+        <li><a href="/booking/">Bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <% if (isAuthenticated) { %>
+            <li><a href="/auth/logout">Logout</a></li>
+        <% } else { %>
+            <li><a href="/auth/login">Login</a></li>
+        <% } %>
+    </ul>
+</nav>
