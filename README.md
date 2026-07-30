@@ -2,7 +2,11 @@
 
 A full-stack event booking and ticketing web application built with Node.js, Express, EJS, and MongoDB. The platform lets visitors browse and book tickets for events, gives registered users a personal booking history, and gives admins a dashboard to manage events, bookings, and customer enquiries — replacing manual, spreadsheet-based event tracking with a single web app.
 
-This was built as a 3rd year Web Programming (WPR) project.
+This was built as a 3rd year Web Programming (WPR) project.<br><br>
+
+(THIS IS A NEW REPO WITH JUST THE CODE COPIES FROM THE ORIGINAL REPO, THE COMMITS WILL NOT SHOW WHAT EACH TEAM MEMBER DID :/ )
+
+<br><br>
 
 Team Member Roles:
 1. Team Lead / Project Coordinator (Marcus)<br>
