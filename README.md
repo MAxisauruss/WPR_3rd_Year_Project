@@ -4,6 +4,45 @@ A full-stack event booking and ticketing web application built with Node.js, Exp
 
 This was built as a 3rd year Web Programming (WPR) project.
 
+Team Member Roles:
+1. Team Lead / Project Coordinator (Marcus)<br>
+Primary Page: Home / Event Listing Page.<br>
+Tasks:<br>
+o Oversee overall project cohesion and ensure all five mandatory pages are
+integrated.<br>
+o Implement event discovery features, including search and filtering logic.<br>
+o Coordinate the final presentation and ensure the project meets all functional
+requirements.<br>
+2. Backend Developer (Darrin)<br>
+Primary Page: Booking & Dashboard Page (Logic).<br>
+Tasks:<br>
+o Develop the server-side logic using Node.js and Express.<br>
+o Implement the automated ticket booking system and capacity validation.<br>
+o Create the admin analytics dashboards to track popular events and total
+bookings.<br>
+3. Frontend Developer (Jakobus)<br>
+Primary Page: UI/UX Design across all 5 EJS Templates.<br>
+Tasks:<br>
+o Design and style the frontend using CSS (or Bootstrap/Tailwind) for basic
+responsiveness.<br>
+o Ensure the EJS templates correctly display dynamic data from the backend.<br>
+o Focus on usability and professional layout to meet the UI/UX marking criteria.<br>
+4. Database Engineer (Kamohelo)<br>
+Primary Page: Contact/Enquiry Management Page.<br>
+Tasks:<br>
+o Design and implement MongoDB schemas using Mongoose.<br>
+o Develop the enquiry system to store and retrieve user messages.<br>
+o Ensure data persistence and validation across all models (Events, Users,
+Bookings).<br>
+5. Security / DevOps Engineer (Oratile)<br>
+Primary Page: User Authentication Page.<br>
+Tasks:<br>
+o Implement secure registration and login using password hashing (bcrypt).<br>
+o Establish Role-Based Access Control (RBAC) and protect admin routes via
+middleware.<br>
+o Manage the GitHub repository, ensuring frequent commits and proper version
+control<br>
+
 ## Features
 
 - **Event browsing** — public event listing, plus a detail page per event
