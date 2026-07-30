@@ -94,7 +94,3 @@ The app will be available at `http://localhost:3000`.
 - Booking cancellation and payment integration are not yet implemented
 - Admin analytics are basic (top events by tickets sold, total revenue) and could be expanded
 - No automated test suite yet
-
-## License
-
-ISC
